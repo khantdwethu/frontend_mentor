@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+
+    <!-- animate css libary -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/destination.css" />
+    <title>Frontend Mentor | Space tourism website</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+            <g fill="none" fill-rule="evenodd">
+              <circle cx="24" cy="24" r="24" fill="#FFF" />
+              <path
+                fill="#0B0D17"
+                d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"
+              />
+            </g>
+          </svg>
+        </div>
+        <div class="menu">
+          <div class="menuIcon" id="menuIcon">
+            <img src="assets/shared/icon-hamburger.svg" close="no" alt="" />
+          </div>
+          <div class="menuLists desktop_view">
+            <a href="./index.html" class="menuList"><span>00</span>HOME</a
+            ><a href="./destination-moon.html" class="menuList active"
+              ><span>01</span>DESITNATION</a
+            ><a href="./crew-commander.html" class="menuList"
+              ><span>02</span>CREW</a
+            ><a href="./technology-vehicle.html" class="menuList"
+              ><span>03</span>TECHNOLOGY</a
+            >
+          </div>
+          <div class="menuLists mobile_view" id="mobile_view">
+            <a href="./index.html" class="menuList"><span>00</span>HOME</a
+            ><a href="./destination-moon.html" class="menuList active"
+              ><span>01</span>DESITNATION</a
+            ><a href="./crew-commander.html" class="menuList"
+              ><span>02</span>CREW</a
+            ><a href="./technology-vehicle.html" class="menuList"
+              ><span>03</span>TECHNOLOGY</a
+            >
+          </div>
+        </div>
+      </nav>
+      <div class="destinationContainer">
+        <h3
+          class="
+            destination
+            animate__animated animate__bounceInDown animate__slow
+          "
+        >
+          <span>01</span> Pick your destination
+        </h3>
+        <div class="destinationBox">
+          <div
+            class="
+              destinationImg
+              animate__animated animate__fadeInLeft animate__slow
+            "
+          >
+            <img
+              src="assets/destination/image-moon.png"
+              id="img"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div
+            class="
+              destinationInfo
+              animate__animated animate__slideInRight animate__slow
+            "
+          >
+            <div class="destinationLinks">
+              <a
+                href="#"
+                onclick="onChnageDesitnation(0)"
+                class="destinationLink active"
+                >MOON</a
+              >
+              <a
+                href="#"
+                onclick="onChnageDesitnation(1)"
+                class="destinationLink"
+                >MARS</a
+              >
+              <a
+                href="#"
+                onclick="onChnageDesitnation(2)"
+                class="destinationLink"
+                >EUROPA</a
+              >
+              <a
+                href="#"
+                onclick="onChnageDesitnation(3)"
+                class="destinationLink"
+                >TITAN</a
+              >
+            </div>
+            <h1 class="distinationHeader">MOON</h1>
+            <p class="destinationBody" id="destinationBody">
+              See our planet as you’ve never seen it before. A perfect relaxing
+              trip away to help regain perspective and come back refreshed.
+              While you’re there, take in some history by visiting the Luna 2
+              and Apollo 11 landing sites.
+            </p>
+            <div class="destinationFooter">
+              <div>
+                <span>Avg. distance</span>
+                <h3 id="distance">384,400 km</h3>
+              </div>
+              <div>
+                <span>Est. travel time</span>
+                <h3 id="travel">3 days</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const dlinks = $(".destinationLink");
+
+      //to get data form json
+      const httpRequest = (method, url) => {
+        const promise = new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+
+          xhr.open(method, url);
+
+          xhr.responseType = "json";
+
+          xhr.onload = () => {
+            data = xhr.response;
+            resolve(data);
+          };
+
+          xhr.onreadystatechange = () => {
+            if (xhr.status == "404") {
+              reject("something Wrongs");
+            }
+          };
+
+          xhr.send();
+        });
+
+        return promise;
+      };
+
+      function onChnageDesitnation(desitnationNo) {
+        removeAllActive(dlinks);
+
+        setActive(dlinks[desitnationNo]);
+
+        httpRequest("GET", "./data.json")
+          .then((result) => {
+            const destinationData = result.destinations;
+            changeDestination(destinationData[desitnationNo]);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      function setActive(element) {
+        element.classList.add("active");
+      }
+
+      function removeAllActive(elements) {
+        for (element of elements) {
+          element.classList.remove("active");
+        }
+      }
+
+      // change info about destination
+      function changeDestination(data) {
+        const { name, description, images, distance, travel } = data;
+
+        $(".distinationHeader")[0].innerHTML = name;
+        $(".destinationBody")[0].innerHTML = description;
+
+        $("#img").attr({ src: images.png });
+        $("#distance").text(distance);
+        $("#travel").text(travel);
+      }
+      //to change menu icon (humagure or close)
+      $("#menuIcon").click(() => {
+        if ($("#mobile_view").hasClass("active")) {
+          $("#mobile_view").toggleClass("nonactive");
+        } else {
+          $("#mobile_view").toggleClass("active");
+        }
+
+        if ($("#menuIcon img").attr("close") == "no") {
+          $("#menuIcon img").attr("src", "./assets/shared/icon-close.svg");
+          $("#menuIcon img").attr("close", "yes");
+        } else {
+          $("#menuIcon img").attr("src", "./assets/shared/icon-hamburger.svg");
+          $("#menuIcon img").attr("close", "no");
+        }
+      });
+    </script>
+  </body>
+</html>

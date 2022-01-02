@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+    --main-font: #fff;
+    --second-font: #e9e9e9e0;
+    --thrid-font: #f4f4f4e0;
+}
+
+body {
+    background: url(../assets/destination/background-destination-desktop.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--main-font);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding-top: 30px;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --------------------nav-----------------  */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+
+
+.logo {
+    margin-left: 20px;
+}
+
+.menuIcon {
+    display: none;
+    z-index: 999;
+}
+
+.menuLists {
+    padding: 0 80px 0 50px;
+    display: flex;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.menuList {
+    display: inline-block;
+    align-self: center;
+    padding: 20px 0;
+    font-weight: normal;
+    color: var(--thrid-font);
+    font-size: 85%;
+    margin: 0 10px;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.mobile_view.menuLists {
+    padding-top: 15%;
+}
+
+
+
+.mobile_view {
+    transform: translateX(100%);
+    transition: all .5s linear;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    bottom: 0;
+    right: 0;
+    background: gray;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(17.5px);
+    -webkit-backdrop-filter: blur(17.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 99;
+}
+
+
+.menuList span {
+    font-size: 90%;
+    font-weight: 900;
+    margin-right: 3px;
+    color: var(--main-font);
+}
+
+
+.menuList.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: -8px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* --------------------nav-----------------  */
+
+
+/* -------------------destinationCOntaienr--------------- */
+.destinationContainer {
+    margin: 0 auto 100px auto;
+    width: 75%;
+    padding: 35px 0 0 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 80vh;
+    margin-top: 15vh;
+    transform: translate(-50%, -50%);
+}
+
+.destination {
+    font-size: 110%;
+    font-weight: 600;
+    color: var(--second-font);
+    text-transform: uppercase;
+    word-spacing: 5px;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+}
+
+.destination span {
+    color: rgb(78, 75, 75);
+}
+
+.destinationBox {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.destinationBox>div {
+    flex: 0 0 45%;
+}
+
+.destinationImg img {
+    width: 80%;
+    animation: roate 30s linear infinite;
+}
+
+@keyframes roate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+
+    }
+}
+
+.destinationLinks {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.destinationLink {
+    text-decoration: none;
+    color: var(--second-font);
+    font-size: 75%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.destinationLink.active::after {
+    content: "";
+    display: block;
+    border-radius: 4px;
+    position: relative;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+}
+
+.distinationHeader {
+    margin: 5px 0;
+    font-weight: 400;
+    font-size: 350%;
+    letter-spacing: 2.5px;
+}
+
+.destinationBody {
+    font-size: 80%;
+    color: var(--second-font);
+    margin-bottom: 20px;
+}
+
+.destinationFooter {
+    border-top: 0.1px solid var(--second-font);
+    padding: 10px 0;
+    display: flex;
+}
+
+.destinationFooter>div {
+    width: 49%;
+    text-transform: uppercase;
+    color: var(--second-font);
+}
+
+.destinationFooter span {
+    font-size: 70%;
+    color: grey;
+}
+
+.destinationFooter h3 {
+    font-weight: lighter;
+}
+
+/* -------------------destinationCOntaienr--------------- */
+
+
+
+@media (max-width:767px) {
+    body {
+        background: url(../assets/destination/background-destination-tablet.jpg);
+        background-position: center;
+        background-size: cover;
+        font-size: 14px;
+        position: relative;
+
+    }
+
+    nav::before {
+        display: none;
+    }
+
+    .container {
+        padding-top: 20px;
+    }
+
+
+
+    .menuLists {
+        padding: 0 2% 0 1%;
+    }
+
+
+
+    .destinationBox {
+        display: block;
+    }
+
+    .destinationImg {
+        width: 60%;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    .destinationInfo {
+        text-align: center;
+    }
+
+    .destinationLinks {
+        width: 100%;
+
+        text-align: center;
+        justify-content: center;
+    }
+
+    .destinationContainer {
+        position: relative;
+        margin-top: 0vh;
+        height: 100%;
+        margin: 0;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width:576px) {
+
+    body {
+        background: url(../assets/destination/background-destination-mobile.jpg);
+        background-position: center;
+        background-size: cover;
+        font-size: 18px;
+    }
+
+
+    .menuIcon {
+        display: block;
+        margin-right: 20px;
+        z-index: 99999999999999999999999999999999999999;
+        position: relative;
+
+
+    }
+
+
+    .mobile_view.active {
+        display: flex;
+        animation: leftmove .5s linear forwards;
+    }
+
+    .mobile_view.nonactive {
+        display: flex;
+        animation: rightmove .5s linear forwards;
+
+    }
+
+    @keyframes leftmove {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+
+    @keyframes rightmove {
+        from {
+            transform: translateX(0%);
+        }
+
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    .mobile_view .menuList {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 120%;
+        margin: 20px 0;
+    }
+
+    .mobile_view .menuList {
+        width: 80%;
+        margin: 0 auto 15px auto;
+    }
+
+
+    .desktop_view {
+        display: none;
+    }
+
+    .destination {
+        text-align: center;
+    }
+
+    .destinationImg {
+        width: 100%;
+    }
+
+    .destinationBox {
+        padding-bottom: 50px;
+    }
+}

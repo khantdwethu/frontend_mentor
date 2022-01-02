@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+
+    <!-- animate css libary  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- animate css libary  -->
+    <link rel="stylesheet" href="./css/technology.css" />
+    <title>Frontend Mentor | Space tourism website</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+            <g fill="none" fill-rule="evenodd">
+              <circle cx="24" cy="24" r="24" fill="#FFF" />
+              <path
+                fill="#0B0D17"
+                d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"
+              />
+            </g>
+          </svg>
+        </div>
+        <div class="menu">
+          <div class="menuIcon" id="menuIcon">
+            <img src="assets/shared/icon-hamburger.svg" close="no" alt="" />
+          </div>
+          <div class="menuLists desktop_view">
+            <a href="./index.html" class="menuList"><span>00</span>HOME</a
+            ><a href="./destination-moon.html" class="menuList"
+              ><span>01</span>DESITNATION</a
+            ><a href="./crew-commander.html" class="menuList"
+              ><span>02</span>CREW</a
+            ><a href="./technology-vehicle.html" class="menuList active"
+              ><span>03</span>TECHNOLOGY</a
+            >
+          </div>
+          <div class="menuLists mobile_view">
+            <a href="./index.html" class="menuList"><span>00</span>HOME</a
+            ><a href="./destination-moon.html" class="menuList"
+              ><span>01</span>DESITNATION</a
+            ><a href="./crew-commander.html" class="menuList"
+              ><span>02</span>CREW</a
+            ><a href="./technology-vehicle.html" class="menuList active"
+              ><span>03</span>TECHNOLOGY</a
+            >
+          </div>
+        </div>
+      </nav>
+
+      <div class="technologyContaienr">
+        <h3 class="technology animate__animated animate__slideInDown"><span>03</span> SPACE LAUNCH 101</h3>
+        <div class="technologyBoxContainer">
+          <div class="technologyAbout animate__animated animate__slideInLeft">
+            <div class="technologyLinks">
+              <a href="./technology-vehicle.html" class="technologyLink">1</a>
+              <a
+                href="./technology-spaceport.html"
+                class="technologyLink active"
+                >2</a
+              ><a href="./technology-capsule.html" class="technologyLink">3</a>
+            </div>
+            <div class="technologyInfo">
+              <span>THE TECHNOLOGY</span>
+              <h1>Spaceport</h1>
+              <p>
+                A spaceport or cosmodrome is a site for launching (or receiving)
+                spacecraft, by analogy to the seaport for ships or airport for
+                aircraft. Based in the famous Cape Canaveral, our spaceport is
+                ideally situated to take advantage of the Earth’s rotation for
+                launch.
+              </p>
+            </div>
+          </div>
+          <div class="technologyImg animate__animated animate__slideInRight">
+            <img
+              src="./assets/technology/image-spaceport-portrait.jpg"
+              alt=""
+              srcset=""
+              id="img"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("menuIcon").addEventListener("click", (e) => {
+        if (
+          document
+            .getElementsByClassName("mobile_view")[0]
+            .classList.contains("active")
+        ) {
+          document
+            .getElementsByClassName("mobile_view")[0]
+            .classList.toggle("nonactive");
+        } else {
+          document
+            .getElementsByClassName("mobile_view")[0]
+            .classList.toggle("active");
+        }
+
+        if (
+          document.querySelector("#menuIcon img").getAttribute("close") == "no"
+        ) {
+          document.querySelector("#menuIcon img").src =
+            "./assets/shared/icon-close.svg";
+          document.querySelector("#menuIcon img").setAttribute("close", "yes");
+        } else {
+          document.querySelector("#menuIcon img").src =
+            "./assets/shared/icon-hamburger.svg";
+          document.querySelector("#menuIcon img").setAttribute("close", "no");
+        }
+      });
+
+      function screenTest(e) {
+        if (e.matches) {
+          document.getElementById("img").src =
+            "./assets/technology/image-spaceport-landscape.jpg";
+        } else {
+          document.getElementById("img").src =
+            "./assets/technology/image-spaceport-portrait.jpg";
+        }
+      }
+      var mql = window.matchMedia("(max-width: 768px)");
+      mql.addEventListener("change", screenTest);
+    </script>
+  </body>
+</html>

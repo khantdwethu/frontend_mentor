@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+
+    <!-- animate css libary -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/crew.css" />
+    <script></script>
+    <title>Frontend Mentor | Space tourism website</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+            <g fill="none" fill-rule="evenodd">
+              <circle cx="24" cy="24" r="24" fill="#FFF" />
+              <path
+                fill="#0B0D17"
+                d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"
+              />
+            </g>
+          </svg>
+        </div>
+        <div class="menu">
+          <div class="menuIcon" id="menuIcon">
+            <img src="assets/shared/icon-hamburger.svg" close="no" alt="" />
+          </div>
+          <div class="menuLists desktop_view">
+            <a href="./index.html" class="menuList"><span>00</span>HOME</a
+            ><a href="./destination-moon.html" class="menuList"
+              ><span>01</span>DESITNATION</a
+            ><a href="./crew-commander.html" class="menuList active"
+              ><span>02</span>CREW</a
+            ><a href="./technology-vehicle.html" class="menuList"
+              ><span>03</span>TECHNOLOGY</a
+            >
+          </div>
+          <div class="menuLists mobile_view">
+            <a href="./index.html" class="menuList"><span>00</span>HOME</a
+            ><a href="./destination-moon.html" class="menuList"
+              ><span>01</span>DESITNATION</a
+            ><a href="./crew-commander.html" class="menuList active"
+              ><span>02</span>CREW</a
+            ><a href="./technology-vehicle.html" class="menuList"
+              ><span>03</span>TECHNOLOGY</a
+            >
+          </div>
+        </div>
+      </nav>
+      <div class="crewContainer">
+        <h3 class="crew animate__animated animate__bounceInDown animate__slow">
+          <span>02</span> Meet Your Crew
+        </h3>
+
+        <div class="crewBox">
+          <div
+            class="crewInfo animate__animated animate__fadeInLeft animate__slow"
+          >
+            <span class="crewPostion">Commander</span>
+            <h1 class="crewHeader">Douglas Hurley</h1>
+            <p class="crewBody">
+              Douglas Gerald Hurley is an American engineer, former Marine Corps
+              pilot and former NASA astronaut. He launched into space for the
+              third time as commander of Crew Dragon Demo-2.
+            </p>
+            <div class="crewLinks">
+              <a href="# " class="crewLink active">&nbsp;</a>
+              <a href="#" class="crewLink">&nbsp;</a>
+              <a href="#" class="crewLink">&nbsp;</a>
+              <a href="#" class="crewLink">&nbsp;</a>
+            </div>
+          </div>
+          <div
+            class="
+              crewImg
+              animate__animated animate__slideInRight animate__slow
+            "
+          >
+            <img
+              src="assets/crew/image-douglas-hurley.png"
+              id="img"
+              alt=""
+              srcset=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(() => {
+        const httpRequest = () => {
+          const promise = new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "./data.json");
+            xhr.responseType = "json";
+
+            xhr.onload = () => {
+              data = xhr.response;
+              resolve(data);
+            };
+            xhr.send();
+          });
+          return promise;
+        };
+
+        let i = -1;
+        const crewLinks = document.getElementsByClassName("crewLink");
+        for (crewLink of crewLinks) {
+          crewLink.addEventListener("click", onChangeCrewData);
+          crewLink.setAttribute("index", ++i);
+        }
+
+        function onChangeCrewData(e) {
+          httpRequest().then((data) => {
+            var crewData = data.crew;
+            const index = e.target.getAttribute("index");
+            const { bio, images, name, role } = crewData[index];
+            $("#img").attr("src", images.png);
+            $(".crewHeader").text(name);
+            $(".crewPostion").text(role);
+            $(".crewBody").text(bio);
+
+            removeAllactive(crewLinks);
+            e.target.classList.add("active");
+          });
+        }
+        function removeAllactive(elements) {
+          for (element of elements) {
+            element.classList.remove("active");
+          }
+        }
+
+        document.getElementById("menuIcon").addEventListener("click", (e) => {
+          if (
+            document
+              .getElementsByClassName("mobile_view")[0]
+              .classList.contains("active")
+          ) {
+            document
+              .getElementsByClassName("mobile_view")[0]
+              .classList.toggle("nonactive");
+          } else {
+            document
+              .getElementsByClassName("mobile_view")[0]
+              .classList.toggle("active");
+          }
+
+          if (
+            document.querySelector("#menuIcon img").getAttribute("close") ==
+            "no"
+          ) {
+            document.querySelector("#menuIcon img").src =
+              "./assets/shared/icon-close.svg";
+            document
+              .querySelector("#menuIcon img")
+              .setAttribute("close", "yes");
+          } else {
+            document.querySelector("#menuIcon img").src =
+              "./assets/shared/icon-hamburger.svg";
+            document.querySelector("#menuIcon img").setAttribute("close", "no");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

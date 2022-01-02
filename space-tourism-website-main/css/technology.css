@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+    --main-font: #fff;
+    --second-font: #e9e9e9e0;
+    --thrid-font: #f4f4f4e0;
+}
+
+body {
+    background: url(../assets/technology/background-technology-desktop.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--main-font);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding-top: 30px;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --------------------nav-----------------  */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+
+.logo {
+    width: 15%;
+    display: block;
+    /* background: black; */
+    /* margin-left: 20px; */
+    text-align: center;
+}
+
+.menuIcon {
+    display: none;
+    z-index: 999;
+}
+
+
+
+.menuLists {
+    padding: 0 80px 0 50px;
+    display: flex;
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.menuList {
+    display: inline-block;
+    align-self: center;
+    padding: 20px 0;
+    font-weight: normal;
+    color: var(--thrid-font);
+    font-size: 85%;
+    margin: 0 10px;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.mobile_view.menuLists {
+    padding-top: 15%;
+}
+
+
+.mobile_view {
+    transform: translateX(100%);
+    transition: all .5s linear;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    bottom: 0;
+    right: 0;
+    background: gray;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(17.5px);
+    -webkit-backdrop-filter: blur(17.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 99;
+}
+
+
+.menuList span {
+    font-size: 90%;
+    font-weight: 900;
+    margin-right: 3px;
+    color: var(--main-font);
+}
+
+
+.menuList.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: -8px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* --------------------nav-----------------  */
+
+
+/* ---------------------technologyContainer-------------- */
+/* .technologyContainer {
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    height: 400px;
+    background-color: red;
+}
+
+
+.technologyBoxContainer {
+    flex: 0 0 60%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.technologyImg {
+    flex: 0 0 40%;
+    text-align: right;
+}
+
+.technologyImg img {
+    width: 90%;
+    object-fit: cover;
+}
+
+.technology {
+    font-size: 110%;
+    font-weight: 600;
+    color: var(--second-font);
+    text-transform: uppercase;
+    word-spacing: 5px;
+    letter-spacing: 0.5px;
+    margin-bottom: 60px;
+}
+
+.tBox {
+    width: 80%;
+    height: 100%;
+    flex: 0 0 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.technology span {
+    color: grey;
+}
+
+.technologyAbout {
+    display: flex;
+    height: 300px;
+
+}
+
+.technologyLinks {
+    flex: 0 0 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.technologyLink {
+    text-decoration: none;
+    line-height: 50px;
+    text-align: center;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    color: var(--second-font);
+    border: 1px solid var(--main-font);
+    font-size: 120%;
+}
+
+.technologyLink.active {
+    color: gray;
+    background: var(--main-font);
+}
+
+.technologyInfo {
+    flex: 0 0 70%;
+    font-weight: normal;
+    padding-left: 20px;
+
+}
+
+.technologyInfo h1 {
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.technologyInfo p,
+.technologyInfo span {
+    font-weight: 600;
+    font-size: 80%;
+    color: var(--second-font);
+
+} */
+
+.technologyContaienr {
+    margin-top: 80px;
+    min-height: 400px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 15vh auto 0 auto;
+    height: 75vh;
+    /* position: absolute;
+    bottom: 10%; */
+
+}
+
+.technologyBoxContainer {
+    margin: 0 auto;
+    display: flex;
+    height: 80%;
+    justify-content: space-between;
+
+}
+
+.technologyAbout {
+    display: flex;
+    flex: 0 0 60%;
+    height: 100%;
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.technologyImg {
+    flex: 0 0 40%;
+    height: 100%;
+    width: 100%;
+    text-align: right;
+    /* background-color: red; */
+}
+
+.technologyImg img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.technology {
+    font-size: 110%;
+    font-weight: 600;
+    color: var(--second-font);
+    text-transform: uppercase;
+    word-spacing: 5px;
+    letter-spacing: 0.5px;
+    padding-left: 12%;
+    height: 10%;
+}
+
+.technology span {
+    color: grey;
+}
+
+.technologyLinks {
+    flex: 0 0 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.technologyLink {
+    text-decoration: none;
+    line-height: 50px;
+    text-align: center;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    color: var(--second-font);
+    border: 1px solid var(--main-font);
+    font-size: 120%;
+}
+
+
+
+.technologyLink.active {
+    color: gray;
+    background: var(--main-font);
+}
+
+.technologyInfo {
+    flex: 0 0 70%;
+    font-weight: normal;
+    padding-left: 20px;
+
+}
+
+.technologyInfo h1 {
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.technologyInfo p,
+.technologyInfo span {
+    font-weight: 600;
+    font-size: 80%;
+    color: var(--second-font);
+
+}
+
+/* ---------------------technologyContainer-------------- */
+
+
+
+
+
+@media (max-width:767px) {
+    body {
+        background: url(../assets/technology/background-technology-tablet.jpg);
+        background-position: center;
+        background-size: cover;
+        font-size: 14px;
+        position: relative;
+
+    }
+
+    nav::before {
+        display: none;
+    }
+
+    .container {
+        padding-top: 20px;
+    }
+
+    .menuLists {
+        padding: 0 2% 0 1%;
+    }
+
+    .technologyContaienr {
+        margin-top: 10vh;
+    }
+
+    .technologyBoxContainer {
+        flex-direction: column;
+
+    }
+
+
+    .technologyImg {
+        order: -1;
+        width: 100%;
+        min-height: 317px;
+    }
+
+    .technologyImg img {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .technologyAbout {
+        margin-top: 50px;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 0 50px 0;
+
+    }
+
+    .technologyInfo {
+        margin-top: 30px;
+        width: 80%;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .technologyLinks {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .technologyLink {
+
+        margin: 0 20px;
+    }
+}
+
+@media (max-width:576px) {
+
+    body {
+        background: url(../assets/technology/background-technology-mobile.jpg);
+        background-position: center;
+        background-size: cover;
+        font-size: 18px;
+    }
+
+
+    .menuIcon {
+        display: block;
+        margin-right: 20px;
+        z-index: 999;
+        position: relative;
+
+
+    }
+
+    .mobile_view.active {
+        display: flex;
+        animation: leftmove .5s linear forwards;
+    }
+
+    .mobile_view.nonactive {
+        display: flex;
+        animation: rightmove .5s linear forwards;
+
+    }
+
+    @keyframes leftmove {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+
+    @keyframes rightmove {
+        from {
+            transform: translateX(0%);
+        }
+
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    .mobile_view .menuList {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 120%;
+        margin: 20px 0;
+    }
+
+    .mobile_view .menuList {
+        width: 80%;
+        margin: 0 auto 15px auto;
+    }
+
+
+    .desktop_view {
+        display: none;
+    }
+
+    .technologyContaienr {
+        margin-top: 10%;
+    }
+
+    .technology {
+        margin-bottom: 20px;
+    }
+
+    .technologyInfo {
+        width: 95%;
+        padding-bottom: 50px;
+    }
+}

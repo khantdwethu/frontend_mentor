@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+    --main-font: #fff;
+    --second-font: #e9e9e9e0;
+    --thrid-font: #f4f4f4e0;
+}
+
+body {
+    background: url(../assets/crew/background-crew-desktop.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--main-font);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 30px 0;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+
+}
+
+/* --------------------nav-----------------  */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+
+.logo {
+    margin-left: 20px;
+}
+
+.menuIcon {
+    display: none;
+    z-index: 999;
+}
+
+.menuLists {
+    padding: 0 80px 0 50px;
+    display: flex;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.menuList {
+    display: inline-block;
+    align-self: center;
+    padding: 20px 0;
+    font-weight: normal;
+    color: var(--thrid-font);
+    font-size: 85%;
+    margin: 0 10px;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.mobile_view.menuLists {
+    padding-top: 15%;
+}
+
+
+.mobile_view {
+    transform: translateX(100%);
+    transition: all .5s linear;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    bottom: 0;
+    right: 0;
+    background: gray;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(17.5px);
+    -webkit-backdrop-filter: blur(17.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 99;
+}
+
+.menuList span {
+    font-size: 90%;
+    font-weight: 900;
+    margin-right: 3px;
+    color: var(--main-font);
+}
+
+
+.menuList.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: -8px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* --------------------nav-----------------  */
+
+/* -------------------crewCOntaienr--------------- */
+.crewContainer {
+    margin: 0 auto;
+    width: 75%;
+    /* padding: 30px 0 0 0;
+ */
+    color: var(--main-font);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: 15vh;
+    height: 72vh;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.crew {
+    height: 20%;
+    font-size: 110%;
+    font-weight: 600;
+    color: var(--second-font);
+    text-transform: uppercase;
+    word-spacing: 5px;
+    letter-spacing: 0.5px;
+    /* margin-bottom: 60px; */
+}
+
+.crew span {
+    color: grey;
+}
+
+
+.crewBox {
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+}
+
+
+
+.crewBox>div {
+    /* margin-top: 30px; */
+}
+
+.crewInfo {
+    flex: 0 0 55%;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.crewImg {
+    flex: 0 0 44%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.crewImg img {
+    /* width: 90%; */
+    height: 115%;
+    object-fit: cover;
+}
+
+.crewPostion {
+    font-size: 110%;
+    color: grey;
+    text-transform: uppercase;
+}
+
+.crewHeader {
+    margin: 5px 0;
+    font-weight: lighter;
+    font-size: 250%;
+    text-transform: uppercase;
+}
+
+.crewBody {
+    font-size: 80%;
+    color: var(--second-font);
+    min-height: 100px;
+}
+
+.crewLinks {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+}
+
+.crewLink {
+
+    text-decoration: none;
+    margin-right: 20px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: grey;
+    cursor: pointer;
+    user-select: none;
+}
+
+.crewLink.active {
+    background-color: var(--main-font);
+}
+
+/* -------------------destinationCOntaienr--------------- */
+
+
+
+
+@media (max-width:767px) {
+    body {
+        background: url(../assets/crew/background-crew-tablet.jpg);
+        background-position: center;
+        background-size: cover;
+        font-size: 14px;
+        position: relative;
+
+    }
+
+    nav::before {
+        display: none;
+    }
+
+    .container {
+        padding-top: 20px;
+    }
+
+    .menuLists {
+        padding: 0 2% 0 1%;
+    }
+
+    .crewBox {
+        display: block;
+    }
+
+    .crewContainer {
+        margin: 0;
+    }
+
+    .crewPostion,
+    .crewBody,
+    .crewHeader {
+        display: block;
+        text-align: center;
+    }
+
+
+    .crewLinks {
+        justify-content: center;
+    }
+
+
+    .crewImg {
+        justify-content: center;
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .crewImg img {
+        height: 100%;
+    }
+}
+
+@media (max-width:576px) {
+
+    body {
+        background: url(../assets/crew/background-crew-mobile.jpg);
+        background-position: center;
+        background-size: cover;
+        font-size: 18px;
+    }
+
+
+    .menuIcon {
+        display: block;
+        margin-right: 20px;
+        z-index: 99999999999999999999999999999999999999;
+        position: relative;
+
+
+    }
+
+
+    .mobile_view.active {
+        display: flex;
+        animation: leftmove .5s linear forwards;
+    }
+
+    .mobile_view.nonactive {
+        display: flex;
+        animation: rightmove .5s linear forwards;
+
+    }
+
+    @keyframes leftmove {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+
+    @keyframes rightmove {
+        from {
+            transform: translateX(0%);
+        }
+
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    .mobile_view .menuList {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 120%;
+        margin: 20px 0;
+    }
+
+    .mobile_view .menuList {
+        width: 80%;
+        margin: 0 auto 15px auto;
+    }
+
+    .desktop_view {
+        display: none;
+    }
+
+
+    .crewBox {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .crewContainer {
+        width: 90%;
+    }
+
+    .crewInfo {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .crewLinks {
+        order: -1;
+        margin-bottom: 20px;
+    }
+
+    .crewHeader {
+        font-size: 170%;
+    }
+
+    .crew {
+        margin-bottom: 5%;
+        text-align: center;
+    }
+
+
+    .crewImg {
+        order: 1;
+        width: 90%;
+        /* height: 120%; */
+        max-height: 300px;
+        /* margin-bottom: 30px; */
+    }
+
+    .crewImg img {
+        height: 130%;
+        object-fit: cover;
+    }
+
+    .crewImg::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 80vw;
+        height: 1px;
+        background: gray;
+    }
+}
