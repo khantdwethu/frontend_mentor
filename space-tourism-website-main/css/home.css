@@ -176,6 +176,8 @@ nav {
     align-items: center;
     justify-content: center;
     height: 100%;
+    cursor: pointer;
+    user-select: none !important;
 }
 
 .heroButton {
@@ -193,6 +195,13 @@ nav {
     font-size: 120%;
     transition: all .6s linear;
     cursor: pointer;
+}
+
+.heroButtonContainer a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    user-select: none;
 }
 
 .heroButton:hover {
