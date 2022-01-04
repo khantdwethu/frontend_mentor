@@ -62,19 +62,13 @@
       </nav>
       <div class="destinationContainer">
         <h3
-          class="
-            destination
-            animate__animated animate__bounceInDown animate__slow
-          "
+          class="destination animate__animated animate__bounceInDown animate__slow"
         >
           <span>01</span> Pick your destination
         </h3>
         <div class="destinationBox">
           <div
-            class="
-              destinationImg
-              animate__animated animate__fadeInLeft animate__slow
-            "
+            class="destinationImg animate__animated animate__fadeInLeft animate__slow"
           >
             <img
               src="assets/destination/image-moon.png"
@@ -84,36 +78,13 @@
             />
           </div>
           <div
-            class="
-              destinationInfo
-              animate__animated animate__slideInRight animate__slow
-            "
+            class="destinationInfo animate__animated animate__slideInRight animate__slow"
           >
             <div class="destinationLinks">
-              <a
-                href="#"
-                onclick="onChnageDesitnation(0)"
-                class="destinationLink active"
-                >MOON</a
-              >
-              <a
-                href="#"
-                onclick="onChnageDesitnation(1)"
-                class="destinationLink"
-                >MARS</a
-              >
-              <a
-                href="#"
-                onclick="onChnageDesitnation(2)"
-                class="destinationLink"
-                >EUROPA</a
-              >
-              <a
-                href="#"
-                onclick="onChnageDesitnation(3)"
-                class="destinationLink"
-                >TITAN</a
-              >
+              <a href="#" index="0" class="destinationLink active">MOON</a>
+              <a href="#" index="1" class="destinationLink">MARS</a>
+              <a href="#" index="2" class="destinationLink">EUROPA</a>
+              <a href="#" index="3" class="destinationLink">TITAN</a>
             </div>
             <h1 class="distinationHeader">MOON</h1>
             <p class="destinationBody" id="destinationBody">
@@ -143,6 +114,7 @@
     ></script>
     <script>
       const dlinks = $(".destinationLink");
+      var destinationData;
 
       //to get data form json
       const httpRequest = (method, url) => {
@@ -170,19 +142,25 @@
         return promise;
       };
 
-      function onChnageDesitnation(desitnationNo) {
+      httpRequest("GET", "./data.json")
+        .then((result) => {
+          destinationData = result.destinations;
+
+          Array.from(dlinks).forEach((link) => {
+            link.addEventListener("click", onChnageDesitnation);
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      function onChnageDesitnation(e) {
+        const desitnationNo = e.target.getAttribute("index");
+        // alert("hi");
         removeAllActive(dlinks);
+        changeDestination(destinationData[desitnationNo]);
 
         setActive(dlinks[desitnationNo]);
-
-        httpRequest("GET", "./data.json")
-          .then((result) => {
-            const destinationData = result.destinations;
-            changeDestination(destinationData[desitnationNo]);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
       }
 
       function setActive(element) {
